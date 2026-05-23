@@ -1,0 +1,40 @@
+# DocuSense AI 📄🤖
+
+DocuSense AI is a full-stack Multimodal Retrieval-Augmented Generation (RAG) engine. It allows users to upload PDF documents and instantly interact with their content. Unlike standard text-only RAG systems, DocuSense extracts both structural text layouts and embedded imagery, passing visual data through a vision model to generate a comprehensive, multimodal context matrix.
+
+## 🏗️ Architecture & Pipeline Flow
+
+The system is separated into a Vite/React frontend and a FastAPI backend. Below is the data flow pipeline for document ingestion and query processing.
+
+```mermaid
+graph TD
+    %% Styling
+    classDef user fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff;
+    classDef front fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff;
+    classDef back fill:#6366f1,stroke:#4338ca,stroke-width:2px,color:#fff;
+    classDef db fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
+
+    %% Ingestion Flow
+    U((User)):::user -->|Uploads PDF| F[React Frontend]:::front
+    F -->|Multipart File| B[FastAPI Backend]:::back
+    B --> P{PyMuPDF Parser}:::back
+    
+    P -->|Extracts Text| T[Text Chunks]:::back
+    P -->|Extracts Images| I[Image Binaries]:::back
+    
+    I --> V[Vision Model<br>afri-aya]:::back
+    V --> C[Visual Captions]:::back
+    
+    T --> E[Embedding Model<br>bge-large]:::back
+    C --> E
+    
+    E --> DB[(FAISS Vector Store)]:::db
+
+    %% Query Flow
+    U -->|Asks Question| F
+    F -->|JSON Query| B
+    B --> R[LangChain Retriever]:::back
+    DB --> R
+    R --> CM[Context Matrix<br>Text + Visuals + Links]:::back
+    CM --> LLM[LLM<br>Llama-3-8B-Instruct]:::back
+    LLM -->|Streamed Response| F
