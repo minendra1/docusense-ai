@@ -1,3 +1,4 @@
+Markdown
 # DocuSense AI 📄🤖
 
 DocuSense AI is a full-stack Multimodal Retrieval-Augmented Generation (RAG) engine. It allows users to upload PDF documents and instantly interact with their content. Unlike standard text-only RAG systems, DocuSense extracts both structural text layouts and embedded imagery, passing visual data through a vision model to generate a comprehensive, multimodal context matrix.
@@ -37,37 +38,44 @@ graph TD
     DB --> R
     R --> CM[Context Matrix<br>Text + Visuals + Links]:::back
     CM --> LLM[LLM<br>Llama-3-8B-Instruct]:::back
-<<<<<<< HEAD
-    LLM -->|Streamed Response| F## 
-    🛠️ Tech Stack
+    LLM -->|Streamed Response| F
+🛠️ Tech Stack
+Frontend:
 
-**Frontend:**
-* React 19 + Vite
-* Tailwind CSS v4 (Native Dark Mode)
-* Lucide React Icons
+React 19 + Vite
 
-**Backend:**
-* Python + FastAPI
-* LangChain Core & Community
-* Hugging Face Inference API
-* FAISS (Vector Storage)
-* PyMuPDF (Document Parsing)
+Tailwind CSS v4 (Native Dark Mode)
 
-## 🚀 Getting Started
+Lucide React Icons
 
-### Prerequisites
-* Python 3.10+
-* Node.js 18+
-* A Hugging Face API Token
+Backend:
 
-### 1. Backend Setup
+Python + FastAPI
+
+LangChain Core & Community
+
+Hugging Face Inference API
+
+FAISS (Vector Storage)
+
+PyMuPDF (Document Parsing)
+
+🚀 Getting Started
+Prerequisites
+Python 3.10+
+
+Node.js 18+
+
+A Hugging Face API Token
+
+1. Backend Setup
 Navigate to the backend directory and set up your Python environment:
-```bash
+
+Bash
 cd backend
 python -m venv .venv
 source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 pip install -r requirements.txt
-
 Create a .env file in the backend directory:
 
 Code snippet
@@ -95,7 +103,3 @@ Visual Captioning: Extracted images are passed to a lightweight vision model (af
 Vectorization: Text chunks and visual captions are embedded using bge-large-en-v1.5 and stored in a local FAISS vector index.
 
 Retrieval & Generation: User queries trigger a similarity search in FAISS. The retrieved context (containing exact page numbers and image metadata) is sent to Meta-Llama-3-8B-Instruct to formulate a precise, grounded answer.
-=======
-    LLM -->|Streamed Response| F
-
->>>>>>> 5955ad43528eba768f6bee300d13e94f7ab9aa7d
