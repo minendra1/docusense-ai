@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-huggingface
+huggingface_hub
+pymupdf
+pymupdf4llm
+pillow
+faiss-cpu
+python-dotenv
+fastapi
+uvicorn
+python-multipart
