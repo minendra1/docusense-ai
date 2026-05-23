@@ -39,6 +39,7 @@ graph TD
     R --> CM[Context Matrix<br>Text + Visuals + Links]:::back
     CM --> LLM[LLM<br>Llama-3-8B-Instruct]:::back
     LLM -->|Streamed Response| F
+    ```
 🛠️ Tech Stack
 Frontend:
 
