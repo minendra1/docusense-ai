@@ -37,6 +37,7 @@ graph TD
     DB --> R
     R --> CM[Context Matrix<br>Text + Visuals + Links]:::back
     CM --> LLM[LLM<br>Llama-3-8B-Instruct]:::back
+<<<<<<< HEAD
     LLM -->|Streamed Response| F## 
     🛠️ Tech Stack
 
@@ -94,3 +95,7 @@ Visual Captioning: Extracted images are passed to a lightweight vision model (af
 Vectorization: Text chunks and visual captions are embedded using bge-large-en-v1.5 and stored in a local FAISS vector index.
 
 Retrieval & Generation: User queries trigger a similarity search in FAISS. The retrieved context (containing exact page numbers and image metadata) is sent to Meta-Llama-3-8B-Instruct to formulate a precise, grounded answer.
+=======
+    LLM -->|Streamed Response| F
+
+>>>>>>> 5955ad43528eba768f6bee300d13e94f7ab9aa7d
