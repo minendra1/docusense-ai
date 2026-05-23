@@ -39,33 +39,3 @@ graph TD
     CM --> LLM[LLM<br>Llama-3-8B-Instruct]:::back
     LLM -->|Streamed Response| F
 
-
-
-    🛠️ Tech Stack
-Frontend:
-
-React 19 + Vite
-
-Tailwind CSS v4 (Native Dark Mode)
-
-Lucide React Icons
-
-Backend:
-
-Python + FastAPI
-
-LangChain Core & Community
-
-Hugging Face Inference API
-
-FAISS (Vector Storage)
-
-PyMuPDF (Document Parsing)
-
-🚀 Getting Started
-Prerequisites
-Python 3.10+
-
-Node.js 18+
-
-A Hugging Face API Token
